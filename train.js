@@ -10,6 +10,21 @@ const list = [
     "endi dam oling, foydasi yoq endi"  // 60
 ];
 
+// A Task Area
+
+function countLetter(letter, word) {
+    let count = 0;
+    for(i = 0; i < word.length; i++) {
+        if(word[i] === letter) {
+            count++;
+        }
+    }
+    return count;
+}
+
+console.log("A Task Area answer: ", countLetter("e", "engineering"));
+console.log("A Task Area answer: ", countLetter("i", "engineering"));
+
 // 22 lesson
 
 async function maslahatBering(a) {
