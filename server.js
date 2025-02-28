@@ -1,43 +1,24 @@
-console.log("Web Server is running");
-const express = require('express');
-const app = express();
 const http = require('http');
-const fs = require('fs');
+const mongodb = require('mongodb');
 
-let user;
-fs.readFile("database/user.json", "utf8", (err, data) => {
-    if (err) {
-        console.log("Error reading user.json", err);
-    } else {
-        user = JSON.parse(data);
+let db;
+const connectionString = "mongodb+srv://suyarqulov2022:15317261@cluster0.p2ulg.mongodb.net/"
+
+mongodb.connect(connectionString, {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+}, (err, client) => {
+    if(err) console.error("Error connecting to MongoDB", err);
+    else {
+        console.log("Connected to MongoDB");
+        module.exports = client;
+        
+        const app = require('./app');
+        const server = http.createServer(app);
+        let PORT = 3000;
+        server.listen(PORT, function() {
+            console.log(`Server is running on port: ${PORT}, http://localhost:${PORT}`);
+        });
     }
 });
 
-
-// 1  Introduction 
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
-
-// 2: Session code
-// 3  Views code
-app.set("views", "views");
-app.set("view engine", "ejs")
-
-// 4 Routings code
-app.post("/create-item", (req, res) => {
-    console.log(req);
-    res.json("Item created successfully");
-});
-app.get("/author", (req, res) => {
-    res.render("author", {user: user});
-})
-app.get("/",  function (req, res) {
-    res.render("harid");
-});
-
-const server = http.createServer(app);
-let PORT = 3000;
-server.listen(PORT, function() {
-    console.log("Server is running on port", PORT);
-});
