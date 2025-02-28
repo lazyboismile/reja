@@ -10,6 +10,16 @@ const list = [
     "endi dam oling, foydasi yoq endi"  // 60
 ];
 
+// B Task Area
+console.log("B Task Area");
+function countDigits(string) {
+    return string.split('').filter(numbers => '0123456789'.includes(numbers)).length;
+}
+
+// Test qilish
+console.log("Raqamlar soni", countDigits("ad2a54y79wet0sfgb9")); // 7
+console.log("Raqamlar soni", countDigits("MIT25GROUP.TONY")); // 2
+
 // A Task Area
 
 function countLetter(letter, word) {
