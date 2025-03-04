@@ -36,3 +36,25 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
             console.log("Xato bervordiku", err);
         });
 });
+
+document.addEventListener("click", function (e) {
+    // Delete user
+    if (e.target.classList.contains("delete-me")) {
+        if (confirm("Are you sure about that?")) {
+            axios
+                .post("/delete-item", {id: e.target.getAttribute("data-id")})
+                .then((response) => {
+                    console.log("Deleted", response.data);
+                    e.target.parentElement.parentElement.remove();
+                })
+                .catch((err) => {
+                    console.log("Xato bervordiku", err);
+                });
+        }
+    } 
+
+    // Edit user
+    else if (e.target.classList.contains("edit-me")) {
+        alert("You clicked edit button!");
+    }
+});
