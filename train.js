@@ -1,5 +1,7 @@
 console.log("Train Area");
 
+const moment = require("moment");
+
 console.log("Jack Ma maslahatlari");
 const list = [
     "yaxshi talaba boling", // 0-20
@@ -9,6 +11,46 @@ const list = [
     "yoshlarga investitsiya qiling",    // 51-60    
     "endi dam oling, foydasi yoq endi"  // 60
 ];
+
+// C Task Area
+
+class Shop {
+    constructor(non, lagmon, cola) {
+        this.items = { non, lagmon, cola }; // Qisqa yozish
+    }
+
+    getTime() {
+        return moment().format('HH:mm');
+    }
+
+    qoldiq() {
+        const vaqt = this.getTime();
+        const { non, lagmon, cola } = this.items;
+        return `Hozir ${vaqt}da ${non}ta non, ${lagmon}ta lagmon va ${cola}ta cola mavjud!`;
+    }
+
+    sotish(item, amount) {
+        const vaqt = this.getTime();
+        if (this.items[item] === undefined) return `${vaqt}: Bunday mahsulot yo'q!`;
+        if (this.items[item] < amount) return `${vaqt}: Yetarli ${item} yo'q!`;
+        this.items[item] -= amount;
+        return `${vaqt}: ${amount}ta ${item} sotildi!`;
+    }
+
+    qabul(item, amount) {
+        const vaqt = this.getTime();
+        if (this.items[item] === undefined) return `${vaqt}: Bunday mahsulot mavjud emas!`;
+        this.items[item] += amount;
+        return `${vaqt}: ${amount}ta ${item} qabul qilindi!`;
+    }
+}
+
+const shop = new Shop(4, 5, 2);
+console.log("C Task Javoblari");
+console.log(shop.qoldiq());
+console.log(shop.sotish("non", 5));
+console.log(shop.qabul("lagmon", 3));
+console.log(shop.qoldiq());
 
 // B Task Area
 console.log("B Task Area");
