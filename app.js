@@ -34,6 +34,22 @@ app.post("/delete-item", (req, res) => {
     });
 });
 
+app.post("/edit-item", (req, res) => {
+    const data = req.body;
+    console.log("user entered /edit-item", data);
+    db.collection("plans").findOneAndUpdate({ _id: new mongodb.ObjectId(data.id)},  {$set: {reja: data.new_input}}, (err, result) => {
+        res.json({ state: "success" });
+    })
+});
+
+app.post("/delete-all", (req, res) => {
+    if(req.body.delete_all) {
+        db.collection("plans").deleteMany(function() {
+            res.json({state: "Hamma plan Delete buldi, pishdi"});
+        })
+    }
+}); 
+
 app.get("/", function (req, res) {
     console.log("user entered /");
     console.log("STEP2: Backendga kirish");
@@ -51,5 +67,7 @@ app.get("/", function (req, res) {
         }
     });
 });
+
+
 
 module.exports = app;
