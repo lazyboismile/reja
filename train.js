@@ -12,6 +12,22 @@ const list = [
     "endi dam oling, foydasi yoq endi"  // 60
 ];
 
+// D task Area
+
+function checkContent(str1, str2) {
+    if (str1.length !== str2.length) return false;
+
+    const sorted1 = str1.split('').sort().join('');
+    const sorted2 = str2.split('').sort().join('');
+
+    return sorted1 === sorted2;
+}
+
+// Test qib kuramiza
+console.log("D Task Area", checkContent("mitgroup", "gmtiprou"));
+console.log("D Task Area", checkContent("Tony", "Tonnymi?"));
+console.log("D Task Area", checkContent("123456789", "zxcvbnmjh")); 
+
 // C Task Area
 
 class Shop {
