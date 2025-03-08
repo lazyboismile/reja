@@ -12,6 +12,22 @@ const list = [
     "endi dam oling, foydasi yoq endi"  // 60
 ];
 
+// E Task Area
+
+function getReverse(str) {
+    if(typeof str !== "string") {
+        return("Iltimos faqat harflardan foydalaning!");
+    } else {
+        return str.split('').reverse().join('');
+    }
+}
+
+// Test qib kuramiza
+
+console.log("E Task Area", getReverse("mitgroup"));
+console.log("E Task Area", getReverse("hello"));
+console.log("E Task Area", getReverse(123456789));
+
 // D task Area
 
 function checkContent(str1, str2) {
@@ -129,7 +145,7 @@ async function maslahatBering(a) {
 async function run() {
     let javob = await maslahatBering(74);
     console.log("Javob: ", javob);
- }
+}
 run();
 
 // 21 Lesson
