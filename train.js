@@ -11,6 +11,24 @@ const list = [
     "yoshlarga investitsiya qiling",    // 51-60    
     "endi dam oling, foydasi yoq endi"  // 60
 ];
+// F Task Area
+
+function findDoublers(str) {
+    for (i = 0; i < str.length; i++) {
+        for (d = i + 1; d < str.length; d++) {
+            if (str[i] === str[d]) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// Test qib kuramiza
+console.log("F Task Area", findDoublers("hello"));
+console.log("F Task Area", findDoublers("mitgroup"));
+console.log("F Task Area", findDoublers("TONNY"));
+
 
 // E Task Area
 
